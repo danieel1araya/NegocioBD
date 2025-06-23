@@ -9,23 +9,28 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using NegocioBD.BAL;
 using NegocioBD.DAL;
+using Microsoft.Extensions.Configuration;
 
 namespace AplicacionNegocio
 {
     public partial class FrmLogin : Form
     {
         private Conexion conexionOracle = new Conexion();
-        private static string sistema = "Sistema de Carros";
+        private readonly string sistema;
         public FrmLogin()
         {
             InitializeComponent();
+            var config = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .Build();
+            sistema = config["Sistema"];
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string usuario = txtUsuario.Text.Trim();
             string contrasena = txtContrasena.Text.Trim();
-            string sistema = "Sistema Prueba"; 
+
 
             try
             {

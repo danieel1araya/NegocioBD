@@ -2,6 +2,7 @@
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
+using Microsoft.Extensions.Configuration;
 using NegocioBD.BAL;
 using NegocioBD.DAL;
 using static System.Collections.Specialized.BitVector32;
@@ -14,12 +15,16 @@ namespace AplicacionNegocio
         private Conexion conexionOracle = new Conexion();
         public string _sistema;
         public int _idUsuario;
-        public static string pantalla = "Login";
+        private readonly string pantalla;
         public FrmCarros(int idUsuario, String sistema)
         {
             InitializeComponent();
             _idUsuario = idUsuario;
             _sistema = sistema;
+            var config = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .Build();
+            pantalla = config["Pantalla1"];
             ConfigurarDataGridView(); // Configura las columnas del DataGridView para mostrar los datos de los carros
             VerificarPermisos();
         }

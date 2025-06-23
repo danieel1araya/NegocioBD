@@ -21,12 +21,13 @@ namespace AplicacionNegocio
             InitializeComponent();
             _idUsuario = idUsuario;
             _sistema = sistema;
+            ConfigurarDataGridView(); // Configura las columnas del DataGridView para mostrar los datos de los carros
+            VerificarPermisos();
             var config = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
                 .Build();
             pantalla = config["Pantalla1"];
-            ConfigurarDataGridView(); // Configura las columnas del DataGridView para mostrar los datos de los carros
-            VerificarPermisos();
+            this.lblSistema.Text = _sistema;
         }
 
         private void ConfigurarDataGridView()
@@ -155,7 +156,7 @@ namespace AplicacionNegocio
             }
         }
 
-        private void VerificarPermisos()
+        public void VerificarPermisos()
         {
             bool puedeConsultar = conexionOracle.VerificarPermisoUsuario(_idUsuario, _sistema, pantalla, "Consultar");
             bool puedeEditar = conexionOracle.VerificarPermisoUsuario(_idUsuario, _sistema, pantalla, "Modificar");

@@ -39,6 +39,7 @@
             label4 = new Label();
             txtAnio = new TextBox();
             button1 = new Button();
+            lblSistema = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -134,11 +135,20 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // lblSistema
+            // 
+            lblSistema.AutoSize = true;
+            lblSistema.Location = new Point(654, 249);
+            lblSistema.Name = "lblSistema";
+            lblSistema.Size = new Size(0, 15);
+            lblSistema.TabIndex = 14;
+            // 
             // FrmCarros
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(764, 450);
+            Controls.Add(lblSistema);
             Controls.Add(button1);
             Controls.Add(txtAnio);
             Controls.Add(label4);
@@ -173,5 +183,6 @@
         private Label label4;
         private TextBox txtAnio;
         private Button button1;
+        private Label lblSistema;
     }
 }

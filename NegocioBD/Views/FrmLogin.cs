@@ -39,6 +39,7 @@ namespace AplicacionNegocio
                     int idUsuario = conexionOracle.ObtenerIdUsuario(usuario);
                     FrmCarros home = new FrmCarros(idUsuario,sistema);
                     home.Show();
+                    home.VerificarPermisos();
                     this.Hide();
                 }
             }
